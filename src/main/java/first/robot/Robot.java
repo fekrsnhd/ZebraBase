@@ -14,6 +14,9 @@ import org.littletonrobotics.junction.wpilog.WPILOGWriter;
 import org.littletonrobotics.junction.wpilog.WPILOGReader;
 
 public class Robot extends LoggedRobot  {
+
+  private final RobotContainer robotContainer;
+
   public Robot() {
     Logger.recordMetadata("ProjectName", "MyProject"); // Set a metadata value
 
@@ -37,10 +40,14 @@ public class Robot extends LoggedRobot  {
         Logger.addDataReceiver(new WPILOGWriter(LogFileUtil.addPathSuffix(logPath, "_sim")));
         break;
     }
+    
+    robotContainer = new RobotContainer();
+
   }
 
   @Override
   public void robotPeriodic() {
+    robotContainer.periodic();
     Scheduler.getDefault().run();
   }
 }

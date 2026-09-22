@@ -1,5 +1,7 @@
 package first.robot;
 
+import org.wpilib.command3.button.CommandXboxController;
+import org.wpilib.driverstation.XboxController;
 import org.wpilib.hardware.bus.CANPort;
 
 import first.lib.hardware.motors.canMotors.CANMotor;
@@ -18,8 +20,10 @@ public class test {
 
     SimpleMotorMechanism smm = new SimpleMotorMechanism("motor", motor);
 
+    CommandXboxController controller = new CommandXboxController(0);
+
     public void testMethod() {
-        smm.runDuty(0.5);
+        controller.a().onTrue(smm.goToPoint(0.5));
     }
 
 }
