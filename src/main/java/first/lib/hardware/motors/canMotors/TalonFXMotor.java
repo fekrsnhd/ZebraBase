@@ -26,7 +26,7 @@ public class TalonFXMotor extends CANMotor {
 
     public TalonFXMotor(CANMotorConfig cfg) {
         super(cfg);
-        this.motor = new TalonFX(cfg.id, new CANBus(cfg.busName));
+        this.motor = new TalonFX(cfg.id, new CANBus(cfg.canPort));
         this.motorSimState = motor.getSimState();
         this.config = new TalonFXConfiguration();
 
@@ -124,6 +124,10 @@ public class TalonFXMotor extends CANMotor {
 
     public void stop() {
         motor.stopMotor();
+    }
+
+    public void setRotorPosition(double pos) {
+        motor.setPosition(pos);
     }
 
     public void setSimEncoderPosition(double rotations) {

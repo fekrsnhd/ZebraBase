@@ -1,6 +1,8 @@
 package first.lib.hardware.motors.canMotors;
 
-public abstract class CANMotor  {
+import first.lib.hardware.motors.Motor;
+
+public abstract class CANMotor extends Motor  {
 
     protected final CANMotorConfig config;
 
@@ -13,8 +15,6 @@ public abstract class CANMotor  {
     }
 
     public abstract void runVoltage(double volts);
-
-    public abstract void runDuty(double percent);
 
     public abstract void goToPoint(double rotations);
 
@@ -30,7 +30,7 @@ public abstract class CANMotor  {
 
     public abstract double getCurrent();
 
-    public abstract void stop();
+    public abstract void setRotorPosition(double pos);
 
     public abstract void setSimEncoderPosition(double rotations);
 

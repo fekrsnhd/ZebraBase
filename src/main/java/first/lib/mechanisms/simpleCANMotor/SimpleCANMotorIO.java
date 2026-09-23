@@ -1,13 +1,13 @@
-package first.lib.mechanisms.simpleMotor;
+package first.lib.mechanisms.simpleCANMotor;
 
 import org.littletonrobotics.junction.AutoLog;
 
 import first.lib.hardware.motors.canMotors.CANMotor;
 
-public abstract class SimpleMotorIO {
+public abstract class SimpleCANMotorIO {
     
     @AutoLog
-    public static class SimpleMotorIOInputs {
+    public static class SimpleCANMotorIOInputs {
         public double position = 0;
         public double current = 0;
         public double volts = 0;
@@ -16,7 +16,7 @@ public abstract class SimpleMotorIO {
 
     protected final CANMotor canMotor;
 
-    protected SimpleMotorIO(CANMotor motor) {
+    protected SimpleCANMotorIO(CANMotor motor) {
         this.canMotor = motor;
     }
     
@@ -48,7 +48,7 @@ public abstract class SimpleMotorIO {
 
     public abstract void setSimEncoderVelocity(double rps);
 
-    public void updateInputs(SimpleMotorIOInputs inputs) {
+    public void updateInputs(SimpleCANMotorIOInputs inputs) {
         inputs.position = canMotor.getRotations();
         inputs.velocity = canMotor.getVelocity();
         inputs.current = canMotor.getCurrent();

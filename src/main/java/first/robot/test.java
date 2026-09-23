@@ -1,14 +1,13 @@
 package first.robot;
 
 import org.wpilib.command3.button.CommandXboxController;
-import org.wpilib.driverstation.XboxController;
 import org.wpilib.hardware.bus.CANPort;
 
 import first.lib.hardware.motors.canMotors.CANMotor;
 import first.lib.hardware.motors.canMotors.CANMotorConfig;
 import first.lib.hardware.motors.canMotors.SparkMaxMotor;
 import first.lib.hardware.motors.canMotors.TalonFXMotor;
-import first.lib.mechanisms.simpleMotor.SimpleMotorMechanism;
+import first.lib.mechanisms.simpleCANMotor.SimpleCANMotorMechanism;
 
 public class test {
 
@@ -18,7 +17,7 @@ public class test {
 
     CANMotor motor2 = new SparkMaxMotor(new CANMotorConfig().withId(9).withCanPort(CANPort.CAN_D0));
 
-    SimpleMotorMechanism smm = new SimpleMotorMechanism("motor", motor);
+    SimpleCANMotorMechanism smm = new SimpleCANMotorMechanism("motor", motor);
 
     CommandXboxController controller = new CommandXboxController(0);
 

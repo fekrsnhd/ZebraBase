@@ -1,11 +1,14 @@
-package first.lib.mechanisms.simpleMotor;
+package first.lib.mechanisms.simpleCANMotor;
 
 import first.lib.hardware.motors.canMotors.CANMotor;
 
-public class SimpleMotorReal extends SimpleMotorIO {
+public class SimpleCANMotorSim extends SimpleCANMotorIO {
 
-    public SimpleMotorReal(CANMotor motor) {
+    private final CANMotor canMotor;
+
+    public SimpleCANMotorSim(CANMotor motor) {
         super(motor);
+        this.canMotor = motor;
     }
 
     public void runVoltage(double volts) {
@@ -55,5 +58,4 @@ public class SimpleMotorReal extends SimpleMotorIO {
     public void setSimEncoderVelocity(double rps) {
         canMotor.setSimEncoderVelocity(rps);
     }
-
 }

@@ -1,4 +1,4 @@
-package first.lib.mechanisms.simpleMotor;
+package first.lib.mechanisms.simpleCANMotor;
 
 import org.littletonrobotics.junction.Logger;
 import org.wpilib.command3.Command;
@@ -11,18 +11,19 @@ Simple motor mechanism uses the CANMotor class to create a wpilib v3 mechanism w
 this allows other files to use the motors commands more easily
 https://github.wpilib.org/allwpilib/docs/beta/java/org/wpilib/command3/Mechanism.html
  */
-public class SimpleMotorMechanism implements Mechanism {
+public class SimpleCANMotorMechanism implements Mechanism {
 
-    private final SimpleMotorIO io;
+    private final SimpleCANMotorIO io;
 
     private final String name;
     
-    private final SimpleMotorIOInputsAutoLogged inputs = new SimpleMotorIOInputsAutoLogged();
+    private final SimpleCANMotorIOInputsAutoLogged inputs = new SimpleCANMotorIOInputsAutoLogged();;
 
-    public SimpleMotorMechanism(String mechName, CANMotor motor) {
+    public SimpleCANMotorMechanism(String mechName, CANMotor motor) {
         this.name = mechName;
         boolean sim = globalConstants.currentMode.equals(globalConstants.Mode.SIM);
-        this.io = sim ? new SimpleMotorSim(motor) : new SimpleMotorReal(motor);
+        this.io = sim ? new SimpleCANMotorSim(motor) : new SimpleCANMotorReal(motor);
+        
     }
 
     public Command stop() { //Stop command runs until interupted 

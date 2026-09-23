@@ -95,6 +95,10 @@ public class SparkMaxMotor extends CANMotor {
         motor.stopMotor();
     }
 
+    public void setRotorPosition(double pos) {
+        encoder.setPosition(pos);
+    }
+
     public void setSimEncoderPosition(double rotations) {
         sparkRelativeEncoderSim.setPosition(rotations);
     }
