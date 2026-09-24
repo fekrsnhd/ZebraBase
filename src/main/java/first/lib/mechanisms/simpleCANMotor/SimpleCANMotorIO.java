@@ -55,5 +55,4 @@ public abstract class SimpleCANMotorIO {
         inputs.volts = canMotor.getAppliedVoltage();
     }
     
-
 }

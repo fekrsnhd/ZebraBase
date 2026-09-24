@@ -17,7 +17,7 @@ public class SimpleCANMotorMechanism implements Mechanism {
 
     private final String name;
     
-    private final SimpleCANMotorIOInputsAutoLogged inputs = new SimpleCANMotorIOInputsAutoLogged();;
+    private final SimpleCANMotorIOInputsAutoLogged inputs = new SimpleCANMotorIOInputsAutoLogged();
 
     public SimpleCANMotorMechanism(String mechName, CANMotor motor) {
         this.name = mechName;
