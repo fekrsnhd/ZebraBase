@@ -1,4 +1,4 @@
-package first.lib.hardware.encoders;
+package first.lib.hardware.encoders.hybridEncoder;
 
 import org.wpilib.hardware.bus.CANPort;
 
@@ -14,7 +14,7 @@ import lombok.With;
 @AllArgsConstructor
 @With
 
-public class EncoderConfig {
+public class HybridEncoderConfig {
     @Builder.Default public int id = 0;
     @Builder.Default public String busName = "rio";
     @Builder.Default public CANPort canPort = CANPort.CAN_S0;

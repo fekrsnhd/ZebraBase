@@ -1,11 +1,13 @@
 package first.robot;
 
 import org.wpilib.command3.button.CommandXboxController;
+import org.wpilib.hardware.bus.CANPort;
 
 import first.lib.hardware.motors.canMotors.CANMotorConfig;
 import first.lib.hardware.motors.canMotors.TalonFXMotor;
 import first.lib.hardware.motors.pwmMotors.PwmMotor;
 import first.lib.hardware.motors.pwmMotors.PwmMotor.PwmSpark;
+import first.lib.hardware.powerDistribution.PowerDistributionBoard.PDH;
 import first.lib.mechanisms.simpleCANMotor.SimpleCANMotorMechanism;
 
 public class RobotContainer {
@@ -16,7 +18,11 @@ public class RobotContainer {
 
     private final CommandXboxController controller = new CommandXboxController(0);
 
+    private final PDH pdh;
+
     public RobotContainer() {
+
+        pdh = new PDH(CANPort.CAN_D0, 1);
 
         pwmMotor = new PwmSpark(0, true);
 
