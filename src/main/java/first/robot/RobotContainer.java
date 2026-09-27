@@ -4,6 +4,7 @@ import org.wpilib.command3.button.CommandXboxController;
 import org.wpilib.hardware.bus.CANPort;
 
 import first.lib.hardware.motors.canMotors.CANMotorConfig;
+import first.lib.hardware.motors.canMotors.SparkMaxMotor;
 import first.lib.hardware.motors.canMotors.TalonFXMotor;
 import first.lib.hardware.motors.pwmMotors.PwmMotor;
 import first.lib.hardware.motors.pwmMotors.PwmMotor.PwmSpark;
@@ -26,7 +27,7 @@ public class RobotContainer {
 
         pwmMotor = new PwmSpark(0, true);
 
-        simpleMotorMechanism = new SimpleCANMotorMechanism("simpleMotor", new TalonFXMotor(new CANMotorConfig()));
+        simpleMotorMechanism = new SimpleCANMotorMechanism("simpleMotor", new SparkMaxMotor(new CANMotorConfig()));
 
         configureBindings();
         
