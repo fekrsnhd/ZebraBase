@@ -4,20 +4,20 @@ public class LinearActuator extends ServoController {
     
     private double fullLengthMM = 180;
 
-    public LinearActuator(PwmServoControllerConfig cfg) { super(cfg); }
+    public LinearActuator(ServoControllerConfig cfg) { super(cfg); }
 
     public LinearActuator(int channel) {
-        PwmServoControllerConfig config = new PwmServoControllerConfig(channel, 600, 2400, -1);
+        ServoControllerConfig config = new ServoControllerConfig(channel, 600, 2400, -1);
         this(config);
     }
 
     public LinearActuator(int channel, int minRate, int maxRate) {
-        PwmServoControllerConfig config = new PwmServoControllerConfig(channel, minRate, maxRate, -1);
+        ServoControllerConfig config = new ServoControllerConfig(channel, minRate, maxRate, -1);
         this(config);
     }
 
     public LinearActuator(int channel, int minRate, int maxRate, int outputPeriod) {
-        PwmServoControllerConfig config = new PwmServoControllerConfig(channel, minRate, maxRate, outputPeriod);
+        ServoControllerConfig config = new ServoControllerConfig(channel, minRate, maxRate, outputPeriod);
         this(config);
     }
 

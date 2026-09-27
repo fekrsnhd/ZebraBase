@@ -12,7 +12,7 @@ import lombok.With;
 @AllArgsConstructor
 @With
 
-public class PwmServoControllerConfig {
+public class ServoControllerConfig {
     /* 
     Configuration parameters for pwm objects
     Uses Lombok's annotation processor to make automatic setters, getters, and default values
@@ -23,7 +23,7 @@ public class PwmServoControllerConfig {
     @Builder.Default public int maxRate = 4096;
     @Builder.Default public int outputPeriod = -1;
 
-    public PwmServoControllerConfig withRange(int min, int max) {
+    public ServoControllerConfig withRange(int min, int max) {
         return this.withMaxRate(max).withMinRate(min);
     }
 

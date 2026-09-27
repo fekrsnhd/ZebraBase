@@ -4,9 +4,9 @@ import org.wpilib.hardware.discrete.PWM;
 
 public class ServoController {
     private final PWM pwmHardware;
-    public final PwmServoControllerConfig config;
+    public final ServoControllerConfig config;
 
-    public ServoController(PwmServoControllerConfig cfg) {
+    public ServoController(ServoControllerConfig cfg) {
         this.config = cfg;
         pwmHardware = new PWM(config.channel);
         if (config.outputPeriod != -1) {

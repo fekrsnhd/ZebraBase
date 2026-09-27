@@ -4,20 +4,20 @@ public class Servo extends ServoController {
     
     private double fullAngle = 180;
 
-    public Servo(PwmServoControllerConfig cfg) { super(cfg); }
+    public Servo(ServoControllerConfig cfg) { super(cfg); }
 
     public Servo(int channel) {
-        PwmServoControllerConfig config = new PwmServoControllerConfig(channel, 600, 2400, -1);
+        ServoControllerConfig config = new ServoControllerConfig(channel, 600, 2400, -1);
         this(config);
     }
 
     public Servo(int channel, int minRate, int maxRate) {
-        PwmServoControllerConfig config = new PwmServoControllerConfig(channel, minRate, maxRate, -1);
+        ServoControllerConfig config = new ServoControllerConfig(channel, minRate, maxRate, -1);
         this(config);
     }
 
     public Servo(int channel, int minRate, int maxRate, int outputPeriod) {
-        PwmServoControllerConfig config = new PwmServoControllerConfig(channel, minRate, maxRate, outputPeriod);
+        ServoControllerConfig config = new ServoControllerConfig(channel, minRate, maxRate, outputPeriod);
         this(config);
     }
 
