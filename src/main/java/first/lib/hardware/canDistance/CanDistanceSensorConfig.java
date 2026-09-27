@@ -1,4 +1,4 @@
-package first.lib.hardware.encoders.hybridEncoder;
+package first.lib.hardware.canDistance;
 
 import org.wpilib.hardware.bus.CANPort;
 
@@ -14,10 +14,14 @@ import lombok.With;
 @AllArgsConstructor
 @With
 
-public class HybridEncoderConfig {
+public class CanDistanceSensorConfig {
+    /* 
+    Configuration parameters for the CAN motor 
+    Uses Lombok's annotation processor to make automatic setters, getters, and default values
+    also has .with___() methods for easier creation of complex objects 
+    */
     @Builder.Default public int id = 0;
     @Builder.Default public String busName = "rio";
     @Builder.Default public CANPort canPort = CANPort.CAN_S0;
-    @Builder.Default public boolean inverted = false;
-    @Builder.Default public int channel = 0;
+
 }

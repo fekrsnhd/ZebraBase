@@ -1,4 +1,4 @@
-package first.lib.hardware.encoders.hybridEncoder;
+package first.lib.hardware.encoders.hybrid;
 
 public abstract class HybridEncoder {
     

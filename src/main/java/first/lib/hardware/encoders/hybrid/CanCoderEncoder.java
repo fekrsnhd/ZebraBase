@@ -1,4 +1,4 @@
-package first.lib.hardware.encoders.hybridEncoder;
+package first.lib.hardware.encoders.hybrid;
 
 import com.ctre.phoenix6.CANBus;
 import com.ctre.phoenix6.hardware.CANcoder;

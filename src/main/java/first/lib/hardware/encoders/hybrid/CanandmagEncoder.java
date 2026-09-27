@@ -1,4 +1,4 @@
-package first.lib.hardware.encoders.hybridEncoder;
+package first.lib.hardware.encoders.hybrid;
 
 import com.reduxrobotics.sensors.canandmag.Canandmag;
 
