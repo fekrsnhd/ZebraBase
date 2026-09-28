@@ -1,16 +1,6 @@
 package first.lib.hardware.canDistance;
 
-public abstract class DistanceSensor {
-
-    protected final CanDistanceSensorConfig config;
-
-    protected DistanceSensor(CanDistanceSensorConfig cfg) {
-        this.config = cfg;
-    }
-
-    public CanDistanceSensorConfig getConfig() {
-        return config;
-    }
+public interface DistanceSensor {
 
     public abstract double getProximity();
 

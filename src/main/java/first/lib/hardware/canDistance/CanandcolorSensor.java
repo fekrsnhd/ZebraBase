@@ -2,13 +2,12 @@ package first.lib.hardware.canDistance;
 
 import com.reduxrobotics.sensors.canandcolor.Canandcolor;
 
-public class CanandcolorSensor extends DistanceSensor {
+public class CanandcolorSensor implements DistanceSensor {
 
     private final Canandcolor sensor;
 
     public CanandcolorSensor(CanDistanceSensorConfig cfg) {
-        super(cfg);
-        this.sensor = new Canandcolor(config.id);
+        this.sensor = new Canandcolor(cfg.id);
     }
 
     @Override

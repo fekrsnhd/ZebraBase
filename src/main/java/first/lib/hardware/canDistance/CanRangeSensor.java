@@ -3,13 +3,12 @@ package first.lib.hardware.canDistance;
 import com.ctre.phoenix6.CANBus;
 import com.ctre.phoenix6.hardware.CANrange;
 
-public class CanRangeSensor extends DistanceSensor {
+public class CanRangeSensor implements DistanceSensor {
 
     private final CANrange sensor;
 
     public CanRangeSensor(CanDistanceSensorConfig cfg) {
-        super(cfg);
-        this.sensor = new CANrange(config.id, new CANBus(config.busName));
+        this.sensor = new CANrange(cfg.id, new CANBus(cfg.busName));
     }
 
     @Override
