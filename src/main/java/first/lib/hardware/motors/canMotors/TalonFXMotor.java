@@ -24,7 +24,6 @@ public class TalonFXMotor extends CANMotor {
     private final TalonFX motor;
     private final TalonFXConfiguration config;
     private final TalonFXSimState motorSimState;
-    private double tolerance;
 
     /**
      * Constructs and configures a TalonFXMotor.
@@ -51,8 +50,6 @@ public class TalonFXMotor extends CANMotor {
                         : GravityTypeValue.Arm_Cosine
                 )
         );
-
-        this.tolerance = cfg.tolerance;
 
         config.CurrentLimits.SupplyCurrentLimit = cfg.currentLimit;
         config.CurrentLimits.SupplyCurrentLimitEnable = cfg.currentLimit > 0;

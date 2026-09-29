@@ -24,7 +24,6 @@ public class TalonFXSMotor extends CANMotor {
     private final TalonFXS motor;
     private final TalonFXSConfiguration config;
     private final TalonFXSSimState motorSimState;
-    private double tolerance;
 
     /**
      * Constructs and configures a TalonFXSMotor.
@@ -51,8 +50,6 @@ public class TalonFXSMotor extends CANMotor {
                         : GravityTypeValue.Arm_Cosine
                 )
         );
-
-        this.tolerance = cfg.tolerance;
 
         config.CurrentLimits.SupplyCurrentLimit = cfg.currentLimit;
         config.CurrentLimits.SupplyCurrentLimitEnable = cfg.currentLimit > 0;
@@ -105,11 +102,7 @@ public class TalonFXSMotor extends CANMotor {
      * @param rotations Target position in rotations.
      */
     public void goToPoint(double rotations) {
-        if (!(Math.abs(getRotations() - rotations) <= tolerance)) {
-            motor.setControl(
-                new PositionVoltage(rotations).withSlot(0)
-            );
-        }
+        new PositionVoltage(rotations).withSlot(0);
     }
 
     /**
