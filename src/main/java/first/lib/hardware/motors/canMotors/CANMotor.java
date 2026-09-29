@@ -6,7 +6,7 @@ import first.lib.hardware.motors.Motor;
  * Abstract base class for CAN-based motors.
  * Extends the base Motor class and mandates implementation of core motor functions.
  */
-public abstract class CANMotor extends Motor  {
+public abstract class CANMotor implements Motor  {
 
     protected final CANMotorConfig config;
 

@@ -5,7 +5,7 @@ import first.lib.hardware.motors.Motor;
 /**
  * Abstract base class for simplified CAN motors, omitting complex PID features.
  */
-public abstract class SimpleCANMotor extends Motor  {
+public abstract class SimpleCANMotor implements Motor  {
 
     protected final SimpleCANMotorConfig config;
 

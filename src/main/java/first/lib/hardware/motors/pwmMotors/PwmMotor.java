@@ -19,7 +19,7 @@ import first.lib.hardware.motors.Motor;
  * Universal wrapper for various PWM motor controllers.
  * Subclasses handle instantiation for specific hardware types.
  */
-public class PwmMotor extends Motor {
+public class PwmMotor implements Motor {
 
     private final PwmMotorConfig config;
     private final PWMMotorController motorController;

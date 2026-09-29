@@ -1,6 +1,6 @@
 package first.lib.hardware.motors;
 
-public abstract class Motor  {
+public interface Motor  {
 
     public abstract void runDuty(double percent);
 
