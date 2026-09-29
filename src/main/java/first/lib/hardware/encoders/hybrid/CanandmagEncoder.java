@@ -1,16 +1,27 @@
 package first.lib.hardware.encoders.hybrid;
 
+import org.wpilib.hardware.bus.CANPort;
 import com.reduxrobotics.sensors.canandmag.Canandmag;
+import first.lib.hardware.encoders.AbsoluteEncoderInterface;
+import first.lib.hardware.encoders.RelativeEncoderInterface;
 
-public class CanandmagEncoder extends HybridEncoder {
+/**
+ * Implements a hybrid encoder utilizing the Redux Canandmag.
+ */
+public class CanandmagEncoder implements AbsoluteEncoderInterface, RelativeEncoderInterface {
 
     private final Canandmag encoder;
 
-    public CanandmagEncoder(HybridEncoderConfig cfg) {
-        super(cfg);
-        this.encoder = new Canandmag(config.id, cfg.canPort);
+    /**
+     * Constructs a Canandmag encoder.
+     * @param id The CAN ID.
+     * @param canPort The CAN port assignment.
+     * @param inverted Whether to invert the direction of the encoder.
+     */
+    public CanandmagEncoder(int id, CANPort canPort, boolean inverted) {
+        this.encoder = new Canandmag(id, canPort);
         
-        if (config.inverted) {
+        if (inverted) {
             encoder.setSettings(encoder.getSettings().setInvertDirection(true));
         } else {
             encoder.setSettings(encoder.getSettings().setInvertDirection(false));
@@ -18,12 +29,12 @@ public class CanandmagEncoder extends HybridEncoder {
     }
 
     @Override
-    public void setRelativePositon(double position) {
+    public void setRelativePosition(double position) {
         encoder.setPosition(position);
     }
 
     @Override
-    public double getRelativePositon() {
+    public double getRelativePosition() {
         return encoder.getPosition();
     }
 
@@ -32,15 +43,22 @@ public class CanandmagEncoder extends HybridEncoder {
         encoder.setPosition(0);
     }
 
-    public void setAbsolutePositon(double position) {
+    /**
+     * Sets the absolute position offset.
+     * @param position The position value to set.
+     */
+    public void setAbsolutePosition(double position) {
         encoder.setAbsPosition(position);
     }
 
     @Override
-    public double getAbsolutePositon() {
+    public double getAbsolutePosition() {
         return encoder.getAbsPosition();
     }
 
+    /**
+     * Resets the absolute position tracking.
+     */
     public void resetAbsolutePosition() {
         encoder.setAbsPosition(0);
     }

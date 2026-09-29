@@ -1,38 +1,31 @@
 package first.lib.hardware.encoders.absolute;
 
 import org.wpilib.hardware.rotation.DutyCycleEncoder;
+import first.lib.hardware.encoders.AbsoluteEncoderInterface;
 
-import first.lib.hardware.encoders.EncoderConfig;
-
-public class RevThroughBoreEncoder extends AbsoluteEncoder {
+/**
+ * Wrapper for the REV Through Bore Encoder using a duty cycle signal.
+ */
+public class RevThroughBoreEncoder implements AbsoluteEncoderInterface {
 
     private final DutyCycleEncoder encoder;
     private double relativeOffset = 0.0;
+    private boolean inverted = false;
 
-    public RevThroughBoreEncoder(EncoderConfig cfg) {
-        super(cfg);
-        this.encoder = new DutyCycleEncoder(config.channel);
+    /**
+     * Constructs a REV Through Bore Encoder via DIO.
+     * @param channel The DIO channel.
+     * @param inv Whether to invert the encoder reading.
+     */
+    public RevThroughBoreEncoder(int channel, boolean inv) {
+        this.inverted = inv;
+        this.encoder = new DutyCycleEncoder(channel);
     }
 
     @Override
-    public void setPositon(double position) {
-        this.relativeOffset = position - getPositon();
+    public double getAbsolutePosition() {
+        double pos = encoder.get() + relativeOffset;
+        return inverted ? -pos : pos; 
     }
 
-    @Override
-    public double getPositon() {
-        return encoder.get() + relativeOffset;
-    }
-
-    @Override
-    public void resetPosition() {
-        setPositon(0);
-    }
-
-
-    @Override
-    public double getVelocity() {
-        double vel = encoder.getFrequency();
-        return config.inverted ? -vel : vel;
-    }
 }

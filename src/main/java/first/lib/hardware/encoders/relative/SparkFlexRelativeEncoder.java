@@ -1,29 +1,39 @@
 package first.lib.hardware.encoders.relative;
 
-import first.lib.hardware.encoders.EncoderConfig;
+import first.lib.hardware.encoders.RelativeEncoderInterface;
 import first.lib.hardware.motors.canMotors.SparkFlexMotor;
 
-public class SparkFlexRelativeEncoder extends RelativeEncoder {
+/**
+ * Maps a REV Spark Flex motor controller's internal encoder to the RelativeEncoder interface.
+ */
+public class SparkFlexRelativeEncoder implements RelativeEncoderInterface {
 
     private final SparkFlexMotor motor;
 
-    public SparkFlexRelativeEncoder(SparkFlexMotor motorObject, EncoderConfig cfg) {
-        super(cfg);
+    /**
+     * Constructs a relative encoder wrapper for a Spark Flex.
+     * @param motorObject The SparkFlexMotor instance.
+     */
+    public SparkFlexRelativeEncoder(SparkFlexMotor motorObject) {
         this.motor = motorObject;
     }
 
-    public void setPositon(double position) {
+    @Override
+    public void setRelativePosition(double position) {
         motor.setRotorPosition(position);
     }
 
-    public double getPositon() {
+    @Override
+    public double getRelativePosition() {
         return motor.getRotations();
     }
 
-    public void resetPosition() {
+    @Override
+    public void resetRelativePosition() {
         motor.setRotorPosition(0);
     }
 
+    @Override
     public double getVelocity() {
         return motor.getVelocity();
     }

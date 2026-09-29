@@ -5,7 +5,6 @@ import org.wpilib.hardware.bus.CANPort;
 
 import first.lib.hardware.motors.canMotors.CANMotorConfig;
 import first.lib.hardware.motors.canMotors.SparkMaxMotor;
-import first.lib.hardware.motors.canMotors.TalonFXMotor;
 import first.lib.hardware.motors.pwmMotors.PwmMotor;
 import first.lib.hardware.motors.pwmMotors.PwmMotor.PwmSpark;
 import first.lib.hardware.powerDistribution.PowerDistributionBoard.PDH;

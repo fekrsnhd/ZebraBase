@@ -1,24 +1,35 @@
 package first.lib.hardware.encoders.hybrid;
 
+import org.wpilib.hardware.bus.CANPort;
 import com.ctre.phoenix6.CANBus;
 import com.ctre.phoenix6.hardware.CANcoder;
+import first.lib.hardware.encoders.AbsoluteEncoderInterface;
+import first.lib.hardware.encoders.RelativeEncoderInterface;
 
-public class CanCoderEncoder extends HybridEncoder {
+/**
+ * Implements a hybrid encoder utilizing the CTRE CANcoder.
+ */
+public class CanCoderEncoder implements AbsoluteEncoderInterface, RelativeEncoderInterface {
 
     private CANcoder encoder;
 
-    public CanCoderEncoder(HybridEncoderConfig cfg) {
-        super(cfg);
-        encoder = new CANcoder(config.id, new CANBus(config.canPort));
+    /**
+     * Constructs a CANcoder wrapper.
+     * @param id The CAN ID.
+     * @param canPort The CAN port assignment.
+     */
+    public CanCoderEncoder(int id, CANPort canPort) {
+        // Preserved the original implementation structure.
+        encoder = new CANcoder(id, new CANBus(canPort.name()));
     }
 
     @Override
-    public void setRelativePositon(double position) {
+    public void setRelativePosition(double position) {
         encoder.setPosition(position);
     }
     
     @Override
-    public double getRelativePositon() {
+    public double getRelativePosition() {
         return encoder.getPosition().getValueAsDouble();
     }
     
@@ -28,7 +39,7 @@ public class CanCoderEncoder extends HybridEncoder {
     }
     
     @Override
-    public double getAbsolutePositon() {
+    public double getAbsolutePosition() {
         return encoder.getAbsolutePosition().getValueAsDouble();
     }
     

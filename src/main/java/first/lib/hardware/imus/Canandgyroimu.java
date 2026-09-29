@@ -3,14 +3,25 @@ package first.lib.hardware.imus;
 import org.wpilib.math.geometry.Rotation2d;
 import com.reduxrobotics.sensors.canandgyro.Canandgyro;
 
+/**
+ * IMU implementation using the Redux Robotics Canandgyro.
+ */
 public class Canandgyroimu extends imu6 {
 
     private final Canandgyro imu;
 
+    /**
+     * Constructs a Canandgyroimu using a specified CAN ID.
+     * @param canId The CAN ID of the Canandgyro.
+     */
     public Canandgyroimu(int canId) {
         imu = new Canandgyro(canId);
     }
 
+    /**
+     * Constructs a Canandgyroimu using an existing Canandgyro instance.
+     * @param imu The Canandgyro object.
+     */
     public Canandgyroimu(Canandgyro imu) {
         this.imu = imu;
     }
@@ -21,7 +32,7 @@ public class Canandgyroimu extends imu6 {
     }
 
     @Override
-    public Rotation2d geRotation2d() {
+    public Rotation2d getRotation2d() {
         return imu.getRotation2d();
     }
 
@@ -40,6 +51,10 @@ public class Canandgyroimu extends imu6 {
         resetYaw();
     }
 
+    /**
+     * Sets the yaw to a specific angle.
+     * @param yawDegrees The desired yaw angle in degrees.
+     */
     public void setYaw(double yawDegrees) {
         imu.setYaw(yawDegrees);
     }
@@ -93,5 +108,4 @@ public class Canandgyroimu extends imu6 {
     public void resetAll() {
         resetYaw();
     }
-
 }

@@ -8,18 +8,18 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.With;
 
+/**
+ * Configuration parameters for the CAN motor.
+ * Uses Lombok's annotation processor to make automatic setters, getters, and default values.
+ * Contains .with___() methods for easier creation of complex objects.
+ */
 @Data
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
 @With
-
 public class CANMotorConfig {
-    /* 
-    Configuration parameters for the CAN motor 
-    Uses Lombok's annotation processor to make automatic setters, getters, and default values
-    also has .with___() methods for easier creation of complex objects 
-    */
+    
     @Builder.Default public int id = 0;
     @Builder.Default public String busName = "rio";
     @Builder.Default public CANPort canPort = CANPort.CAN_S0;
@@ -40,14 +40,36 @@ public class CANMotorConfig {
     @Builder.Default public boolean motorInvert = false;
     @Builder.Default public boolean brakeOn = true;
 
+    /**
+     * Configures the Proportional, Integral, and Derivative gains.
+     * @param p Proportional gain (kP)
+     * @param i Integral gain (kI)
+     * @param d Derivative gain (kD)
+     * @return A new CANMotorConfig instance with updated PID values.
+     */
     public CANMotorConfig withPID(double p, double i, double d) {
         return this.withKP(p).withKI(i).withKD(d);
     }
 
+    /**
+     * Configures the PID gains along with the Gravity feedforward gain.
+     * @param p Proportional gain (kP)
+     * @param i Integral gain (kI)
+     * @param d Derivative gain (kD)
+     * @param g Gravity feedforward gain (kG)
+     * @return A new CANMotorConfig instance with updated PID and Gravity values.
+     */
     public CANMotorConfig withPIDG(double p, double i, double d, double g) {
         return this.withKP(p).withKI(i).withKD(d).withKG(g);
     }
 
+    /**
+     * Configures the Static, Velocity, and Acceleration feedforward gains.
+     * @param s Static friction gain (kS)
+     * @param v Velocity gain (kV)
+     * @param a Acceleration gain (kA)
+     * @return A new CANMotorConfig instance with updated SVA values.
+     */
     public CANMotorConfig withSVA(double s, double v, double a) {
         return this.withKS(s).withKV(v).withKA(a);
     }
