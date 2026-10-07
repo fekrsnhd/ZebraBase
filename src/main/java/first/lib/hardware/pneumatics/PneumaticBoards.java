@@ -17,7 +17,7 @@ public class PneumaticBoards {
      * @param id The CAN ID of the board.
      * @param type The specific type of the pneumatics module.
      */
-    private PneumaticBoards(CANPort port, int id, PneumaticsModuleType type) {
+    private PneumaticBoards(int id, CANPort port, PneumaticsModuleType type) {
         this.port = port;
         this.id = id;
         this.type = type;
@@ -57,7 +57,7 @@ public class PneumaticBoards {
          * @param id The CAN ID for this PH.
          */
         public PH(CANPort port, int id) {
-            super(port, id, PneumaticsModuleType.REV_PH);
+            super(id, port, PneumaticsModuleType.REV_PH);
         }
     }
 
@@ -71,7 +71,7 @@ public class PneumaticBoards {
          * @param id The CAN ID for this PCM.
          */
         public PCM(CANPort port, int id) {
-            super(port, id, PneumaticsModuleType.CTRE_PCM);
+            super(id, port, PneumaticsModuleType.CTRE_PCM);
         }
     }
 }

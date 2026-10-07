@@ -1,5 +1,6 @@
 package first.lib.hardware.imus;
 
+import org.wpilib.hardware.bus.CANPort;
 import org.wpilib.math.geometry.Rotation2d;
 import com.reduxrobotics.sensors.canandgyro.Canandgyro;
 
@@ -14,8 +15,8 @@ public class Canandgyroimu extends imu6 {
      * Constructs a Canandgyroimu using a specified CAN ID.
      * @param canId The CAN ID of the Canandgyro.
      */
-    public Canandgyroimu(int canId) {
-        imu = new Canandgyro(canId);
+    public Canandgyroimu(int canId, CANPort port) {
+        imu = new Canandgyro(canId, port);
     }
 
     /**

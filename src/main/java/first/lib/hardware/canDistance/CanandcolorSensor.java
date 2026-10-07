@@ -1,5 +1,7 @@
 package first.lib.hardware.canDistance;
 
+import org.wpilib.hardware.bus.CANPort;
+
 import com.reduxrobotics.sensors.canandcolor.Canandcolor;
 
 /**
@@ -13,8 +15,8 @@ public class CanandcolorSensor implements DistanceSensor {
      * Constructs a CanandcolorSensor using a predefined configuration.
      * @param cfg The CAN configuration properties.
      */
-    public CanandcolorSensor(CanDistanceSensorConfig cfg) {
-        this.sensor = new Canandcolor(cfg.id);
+    public CanandcolorSensor(int id, CANPort port) {
+        this.sensor = new Canandcolor(id, port);
     }
 
     @Override

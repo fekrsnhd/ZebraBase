@@ -7,7 +7,7 @@ public interface DistanceSensor {
 
     /**
      * Retrieves the proximity value.
-     * @return The proximity or distance reading.
+     * @return The proximity or distance reading m, check docs of sensor to know which.
      */
     public abstract double getProximity();
 

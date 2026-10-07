@@ -1,5 +1,6 @@
 package first.lib.hardware.imus;
 
+import org.wpilib.hardware.bus.CANPort;
 import org.wpilib.math.geometry.Rotation2d;
 
 import com.ctre.phoenix6.CANBus;
@@ -14,8 +15,12 @@ public class Pigeon2imu extends imu6Accum {
      * @param id The CAN ID.
      * @param bus The CAN bus the device is on.
      */
-    public Pigeon2imu(int id, CANBus bus) {
-        imu = new Pigeon2(id, bus);
+    public Pigeon2imu(int id, CANPort port) {
+        imu = new Pigeon2(id, new CANBus(port));
+    }
+
+    public Pigeon2imu(int id, String name) {
+        imu = new Pigeon2(id, new CANBus(name));
     }
 
     @Override

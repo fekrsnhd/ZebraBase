@@ -19,7 +19,7 @@ public class PowerDistributionBoard {
      * @param id The CAN ID.
      * @param type The type of module (REV or CTRE).
      */
-    private PowerDistributionBoard(CANPort port, int id, ModuleType type) {
+    private PowerDistributionBoard(int id, CANPort port, ModuleType type) {
         powerDist = new PowerDistribution(port, id, type);
     }
 
@@ -179,7 +179,7 @@ public class PowerDistributionBoard {
      */
     public static class PDH extends PowerDistributionBoard {
         public PDH(CANPort port, int id) {
-            super(port, id, ModuleType.REV);
+            super(id, port, ModuleType.REV);
         }
 
         public PDH(CANPort port) {
@@ -192,7 +192,7 @@ public class PowerDistributionBoard {
      */
     public static class PDP extends PowerDistributionBoard {
         public PDP(CANPort port, int id) {
-            super(port, id, ModuleType.CTRE);
+            super(id, port, ModuleType.CTRE);
         }
 
         public PDP(CANPort port) {

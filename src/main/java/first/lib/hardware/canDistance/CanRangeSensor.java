@@ -1,5 +1,7 @@
 package first.lib.hardware.canDistance;
 
+import org.wpilib.hardware.bus.CANPort;
+
 import com.ctre.phoenix6.CANBus;
 import com.ctre.phoenix6.hardware.CANrange;
 
@@ -10,12 +12,12 @@ public class CanRangeSensor implements DistanceSensor {
 
     private final CANrange sensor;
 
-    /**
-     * Constructs a CanRangeSensor using a predefined configuration.
-     * @param cfg The CAN configuration properties.
-     */
-    public CanRangeSensor(CanDistanceSensorConfig cfg) {
-        this.sensor = new CANrange(cfg.id, new CANBus(cfg.busName));
+    public CanRangeSensor(int id, CANPort port) {
+        this.sensor = new CANrange(id, new CANBus(port));
+    }
+
+    public CanRangeSensor(int id, String name) {
+        this.sensor = new CANrange(id, new CANBus(name));
     }
 
     @Override
