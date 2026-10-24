@@ -2,7 +2,7 @@ package first.lib.hardware.canDistance;
 
 import org.wpilib.hardware.bus.CANPort;
 
-import com.reduxrobotics.sensors.canandcolor.Canandcolor;
+import com.reduxrobotics.canandcolor.Canandcolor;
 
 /**
  * Implementation of a DistanceSensor using the Redux Canandcolor.

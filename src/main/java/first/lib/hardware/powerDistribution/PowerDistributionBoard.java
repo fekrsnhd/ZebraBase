@@ -178,7 +178,7 @@ public class PowerDistributionBoard {
      * Implementation for a REV Power Distribution Hub (PDH).
      */
     public static class PDH extends PowerDistributionBoard {
-        public PDH(CANPort port, int id) {
+        public PDH(int id, CANPort port) {
             super(id, port, ModuleType.REV);
         }
 
@@ -191,7 +191,7 @@ public class PowerDistributionBoard {
      * Implementation for a CTRE Power Distribution Panel (PDP).
      */
     public static class PDP extends PowerDistributionBoard {
-        public PDP(CANPort port, int id) {
+        public PDP(int id, CANPort port) {
             super(id, port, ModuleType.CTRE);
         }
 

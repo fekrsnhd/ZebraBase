@@ -22,7 +22,7 @@ public class RobotContainer {
 
     public RobotContainer() {
 
-        pdh = new PDH(CANPort.CAN_D0, 1);
+        pdh = new PDH(1, CANPort.CAN_D0);
 
         pwmMotor = new PwmSpark(0, true);
 
@@ -38,6 +38,6 @@ public class RobotContainer {
     }
 
     public void periodic() {
-        //implementation
+
     }
 }

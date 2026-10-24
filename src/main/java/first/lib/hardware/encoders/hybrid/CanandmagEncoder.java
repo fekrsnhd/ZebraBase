@@ -1,7 +1,7 @@
 package first.lib.hardware.encoders.hybrid;
 
 import org.wpilib.hardware.bus.CANPort;
-import com.reduxrobotics.sensors.canandmag.Canandmag;
+import com.reduxrobotics.canandmag.Canandmag;
 import first.lib.hardware.encoders.AbsoluteEncoderInterface;
 import first.lib.hardware.encoders.RelativeEncoderInterface;
 

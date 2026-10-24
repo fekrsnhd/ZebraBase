@@ -2,7 +2,7 @@ package first.lib.hardware.imus;
 
 import org.wpilib.hardware.bus.CANPort;
 import org.wpilib.math.geometry.Rotation2d;
-import com.reduxrobotics.sensors.canandgyro.Canandgyro;
+import com.reduxrobotics.canandgyro.Canandgyro;
 
 /**
  * IMU implementation using the Redux Robotics Canandgyro.

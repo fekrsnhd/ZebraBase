@@ -1,6 +1,7 @@
 package first.lib.hardware.motors.canMotors;
 
 import org.wpilib.hardware.bus.CANPort;
+import org.wpilib.math.system.DCMotor;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -39,6 +40,7 @@ public class CANMotorConfig {
     @Builder.Default public boolean followerAlign = true;
     @Builder.Default public boolean motorInvert = false;
     @Builder.Default public boolean brakeOn = true;
+    @Builder.Default public DCMotor motorType = DCMotor.getAndymark9015(1);
 
     /**
      * Configures the Proportional, Integral, and Derivative gains.
