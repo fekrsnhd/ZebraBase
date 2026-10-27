@@ -5,7 +5,7 @@ import org.wpilib.command3.Command;
 import org.wpilib.command3.Mechanism;
 import org.wpilib.command3.Trigger;
 
-import first.robot.globalConstants;
+import first.robot.GlobalConstants;
 
 /**
  * Elevator Mechanism class wrapping ElevatorIO using native WPILib v3 mechanism standards,
@@ -26,7 +26,7 @@ public class ElevatorMechanism implements Mechanism {
      */
     public ElevatorMechanism(String mechName, ElevatorConfig config) {
         this.name = mechName;
-        boolean sim = globalConstants.currentMode.equals(globalConstants.Mode.SIM);
+        boolean sim = GlobalConstants.currentMode.equals(GlobalConstants.Mode.SIM);
         this.io = sim ? new ElevatorSimulation(config) : new ElevatorReal(config);
     }
 

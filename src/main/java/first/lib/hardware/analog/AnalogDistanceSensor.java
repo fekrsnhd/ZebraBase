@@ -39,7 +39,7 @@ public class AnalogDistanceSensor extends AnalogInputController implements Dista
      * @param channel                   The analog input channel on the RoboRIO.
      * @param voltageToDistanceFunction A function mapping raw voltage (double) to distance (double).
      */
-    public AnalogDistanceSensor(int channel, DoubleUnaryOperator voltageToDistanceFunction) {
+    protected AnalogDistanceSensor(int channel, DoubleUnaryOperator voltageToDistanceFunction) {
         super(channel);
         this.voltageToDistanceFunction = voltageToDistanceFunction;
     }

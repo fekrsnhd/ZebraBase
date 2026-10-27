@@ -4,7 +4,7 @@ import org.littletonrobotics.junction.Logger;
 import org.wpilib.command3.Command;
 import org.wpilib.command3.Mechanism;
 import org.wpilib.command3.Trigger;
-import first.robot.globalConstants;
+import first.robot.GlobalConstants;
 
 /**
  * Flywheel Mechanism managing logic and declarative Command interfaces.
@@ -23,7 +23,7 @@ public class FlywheelMechanism implements Mechanism {
      */
     public FlywheelMechanism(String mechName, FlywheelConfig config) {
         this.name = mechName;
-        boolean sim = globalConstants.currentMode.equals(globalConstants.Mode.SIM);
+        boolean sim = GlobalConstants.currentMode.equals(GlobalConstants.Mode.SIM);
         this.io = sim ? new FlywheelSimulation(config) : new FlywheelReal(config);
     }
 

@@ -18,25 +18,25 @@ import com.pathplanner.lib.config.RobotConfig;
 import com.pathplanner.lib.controllers.PPHolonomicDriveController;
 import com.pathplanner.lib.util.DriveFeedforwards;
 
-import first.lib.hardware.imus.imu6;
-import first.robot.globalConstants;
+import first.lib.hardware.imus.IMU6;
+import first.robot.GlobalConstants;
 import java.util.function.Supplier;
 
 public class MecanumDriveMechanism implements Mechanism {
     private final String name;
     private final MecanumDriveIO io;
-    private final imu6 gyro;
+    private final IMU6 gyro;
     private final MecanumDriveKinematics kinematics;
     private final MecanumDriveOdometry odometry;
     private final MecanumDriveIOInputsAutoLogged inputs = new MecanumDriveIOInputsAutoLogged();
     private Pose2d currentPose = new Pose2d();
 
-    public MecanumDriveMechanism(String name, MecanumDriveConfig config, imu6 gyro, Translation2d fl, Translation2d fr, Translation2d rl, Translation2d rr) {
+    public MecanumDriveMechanism(String name, MecanumDriveConfig config, IMU6 gyro, Translation2d fl, Translation2d fr, Translation2d rl, Translation2d rr) {
         this.name = name;
         this.gyro = gyro;
         this.kinematics = new MecanumDriveKinematics(fl, fr, rl, rr);
         
-        boolean sim = globalConstants.currentMode.equals(globalConstants.Mode.SIM);
+        boolean sim = GlobalConstants.currentMode.equals(GlobalConstants.Mode.SIM);
         this.io = sim ? new MecanumDriveSimulation(config) : new MecanumDriveReal(config);
 
         this.odometry = new MecanumDriveOdometry(kinematics, gyro.getRotation2d(), io.getWheelPositions());

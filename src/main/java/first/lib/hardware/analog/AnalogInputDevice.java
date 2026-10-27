@@ -36,6 +36,11 @@ public class AnalogInputDevice extends AnalogInputController {
         super(new AnalogInputConfig(channel, minVoltage, maxVoltage));
     }
 
+    public AnalogInputDevice(int channel, double minVoltage, double maxVoltage, double range) {
+        super(new AnalogInputConfig(channel, minVoltage, maxVoltage));
+        this.fullScaleRange = range;
+    }
+
     /**
      * Assigns a physical scalar maximum to correspond with the maximum voltage reading.
      * 

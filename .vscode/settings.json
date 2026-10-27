@@ -59,4 +59,5 @@
   ],
   "java.debug.settings.enableRunDebugCodeLens": false,
   "java.dependency.enableDependencyCheckup": false,
+  "java.debug.settings.onBuildFailureProceed": true,
 }

@@ -3,7 +3,7 @@ package first.lib.hardware.imus;
 /**
  * Extension of the imu6 class that supports cumulative rotational data.
  */
-public abstract class imu6Accum extends imu6 {
+public abstract class IMU6Accum extends IMU6 {
 
     /** @return The accumulated rotation around the X axis. */
     public abstract double getAccumX();

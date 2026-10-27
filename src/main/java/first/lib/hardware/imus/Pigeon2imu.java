@@ -1,26 +1,35 @@
 package first.lib.hardware.imus;
 
+import org.wpilib.framework.RobotBase; // Or edu.wpi.first.wpilibj.RobotBase depending on your WPILib setup
 import org.wpilib.hardware.bus.CANPort;
 import org.wpilib.math.geometry.Rotation2d;
 
 import com.ctre.phoenix6.CANBus;
 import com.ctre.phoenix6.hardware.Pigeon2;
 
-
-public class Pigeon2imu extends imu6Accum {
+public class Pigeon2imu extends IMU6Accum {
 
     private final Pigeon2 imu;
 
-    /**
-     * @param id The CAN ID.
-     * @param bus The CAN bus the device is on.
-     */
     public Pigeon2imu(int id, CANPort port) {
         imu = new Pigeon2(id, new CANBus(port));
     }
 
     public Pigeon2imu(int id, String name) {
         imu = new Pigeon2(id, new CANBus(name));
+    }
+
+    /**
+     * Updates the simulated gyro yaw based on the robot's rotational velocity.
+     * @param omegaRadiansPerSecond Robot rotational velocity in rad/s.
+     * @param dt Loop time step in seconds (typically 0.02).
+     */
+    public void simPeriodic(double omegaRadiansPerSecond, double dt) {
+        if (RobotBase.isSimulation()) {
+            double deltaDegrees = Math.toDegrees(omegaRadiansPerSecond * dt);
+            // CTRE Phoenix 6 SimState addYaw accumulates rotation
+            imu.getSimState().addYaw(deltaDegrees);
+        }
     }
 
     @Override
@@ -40,8 +49,6 @@ public class Pigeon2imu extends imu6Accum {
 
     @Override
     public double getRotationRate() {
-        // FIXED: Previously returned AngularVelocityXDevice (Roll axis). 
-        // Now correctly delegates to getYawRate() for the Z-axis rotation rate.
         return getYawRate();
     }
 

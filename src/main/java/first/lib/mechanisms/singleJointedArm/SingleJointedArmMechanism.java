@@ -4,7 +4,7 @@ import org.littletonrobotics.junction.Logger;
 import org.wpilib.command3.Command;
 import org.wpilib.command3.Mechanism;
 import org.wpilib.command3.Trigger;
-import first.robot.globalConstants;
+import first.robot.GlobalConstants;
 
 /**
  * WPILib Mechanism representing a single-jointed arm.
@@ -25,7 +25,7 @@ public class SingleJointedArmMechanism implements Mechanism {
      */
     public SingleJointedArmMechanism(String mechName, SingleJointedArmConfig config) {
         this.name = mechName;
-        boolean sim = globalConstants.currentMode.equals(globalConstants.Mode.SIM);
+        boolean sim = GlobalConstants.currentMode.equals(GlobalConstants.Mode.SIM);
         this.io = sim ? new SingleJointedArmSimulation(config) : new SingleJointedArmReal(config);
     }
 

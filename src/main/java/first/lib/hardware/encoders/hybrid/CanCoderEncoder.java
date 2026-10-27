@@ -23,6 +23,16 @@ public class CanCoderEncoder implements AbsoluteEncoderInterface, RelativeEncode
         encoder = new CANcoder(id, new CANBus(canPort.name()));
     }
 
+    /**
+     * Constructs a CANcoder wrapper.
+     * @param id The CAN ID.
+     * @param busname The CAN bus assignment.
+     */
+    public CanCoderEncoder(int id, String busName) {
+        // Preserved the original implementation structure.
+        encoder = new CANcoder(id, new CANBus(busName));
+    }
+
     @Override
     public void setRelativePosition(double position) {
         encoder.setPosition(position);

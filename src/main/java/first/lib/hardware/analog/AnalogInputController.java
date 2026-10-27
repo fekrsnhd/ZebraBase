@@ -66,7 +66,7 @@ public class AnalogInputController {
      * 
      * @return The raw AnalogInput instance.
      */
-    public AnalogInput getRawInput() {
+    protected AnalogInput getRawInput() {
         return input;
     }
 

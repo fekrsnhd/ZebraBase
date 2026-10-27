@@ -14,7 +14,7 @@ import org.wpilib.framework.RobotBase;
  * on a roboRIO. Change the value of "simMode" to switch between "sim" (physics sim) and "replay"
  * (log replay from a file).
  */
-public final class globalConstants {
+public final class GlobalConstants {
   public static final boolean tuningMode = false; //turn on and off tuning mode for logged tunable numbers
 
   public static final Mode simMode = Mode.SIM;

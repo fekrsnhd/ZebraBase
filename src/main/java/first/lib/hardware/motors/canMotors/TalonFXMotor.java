@@ -14,7 +14,7 @@ import com.ctre.phoenix6.signals.MotorAlignmentValue;
 import com.ctre.phoenix6.signals.NeutralModeValue;
 import com.ctre.phoenix6.sim.TalonFXSimState;
 
-import first.robot.globalConstants;
+import first.robot.GlobalConstants;
 
 /**
  * Implementation of a CANMotor using a CTRE Talon FX.
@@ -102,7 +102,7 @@ public class TalonFXMotor extends CANMotor {
      * @param rotations Target position in rotations.
      */
     public void goToPoint(double rotations) {
-        new PositionVoltage(rotations).withSlot(0);
+        motor.setControl(new PositionVoltage(rotations).withSlot(0));
     }
 
     /**
@@ -110,7 +110,7 @@ public class TalonFXMotor extends CANMotor {
      * @param rpm Target velocity in RPM.
      */
     public void runRPM(double rpm) {
-        new VelocityVoltage(rpm / 60.0).withSlot(0);
+        motor.setControl(new VelocityVoltage(rpm / 60.0).withSlot(0));
     }
 
     /**
@@ -142,7 +142,7 @@ public class TalonFXMotor extends CANMotor {
      * @return Applied voltage.
      */
     public double getAppliedVoltage() {
-        if (globalConstants.currentMode == globalConstants.Mode.SIM) {
+        if (GlobalConstants.currentMode == GlobalConstants.Mode.SIM) {
             return motorSimState.getMotorVoltage();
         }
         return motor.getMotorVoltage().getValueAsDouble();

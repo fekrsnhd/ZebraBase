@@ -1,43 +1,34 @@
 package first.robot;
 
-import org.wpilib.command3.button.CommandXboxController;
-import org.wpilib.hardware.bus.CANPort;
+import first.lib.hardware.imus.Pigeon2imu;
+import first.lib.mechanisms.drivetrains.swerve.SwerveDriveMechanism;
+import first.robot.mechanisms.swerve.SwerveBuilder;
+import first.robot.mechanisms.swerve.SwerveConstants;
 
-import first.lib.hardware.motors.canMotors.CANMotorConfig;
-import first.lib.hardware.motors.canMotors.SparkMaxMotor;
-import first.lib.hardware.motors.pwmMotors.PwmMotor;
-import first.lib.hardware.motors.pwmMotors.PwmMotor.PwmSpark;
-import first.lib.hardware.powerDistribution.PowerDistributionBoard.PDH;
-import first.lib.mechanisms.simpleCANMotor.SimpleCANMotorMechanism;
+import org.wpilib.command3.button.CommandDualShock4Controller;
 
 public class RobotContainer {
 
-    private final SimpleCANMotorMechanism simpleMotorMechanism;
+    private SwerveDriveMechanism drivetrain;
 
-    private final PwmMotor pwmMotor;
-
-    private final CommandXboxController controller = new CommandXboxController(0);
-
-    private final PDH pdh;
+    private CommandDualShock4Controller controller = new CommandDualShock4Controller(0);
 
     public RobotContainer() {
-
-        pdh = new PDH(1, CANPort.CAN_D0);
-
-        pwmMotor = new PwmSpark(0, true);
-
-        simpleMotorMechanism = new SimpleCANMotorMechanism("simpleMotor", new SparkMaxMotor(new CANMotorConfig()));
-
+        drivetrain = SwerveBuilder.build(new Pigeon2imu(0, "swerve"));
         configureBindings();
-        
     }
 
     private void configureBindings() {
-        controller.x().onTrue(simpleMotorMechanism.stop());
-        controller.y().onTrue(simpleMotorMechanism.runDuty(0.5));
+        drivetrain.setDefaultCommand(
+            drivetrain.drive(
+                () -> controller.getLeftX() * SwerveConstants.kSpeedAt12Volts.magnitude(), 
+                () -> controller.getLeftY() * SwerveConstants.kSpeedAt12Volts.magnitude(), 
+                () -> controller.getRightX() * SwerveConstants.kMaxAngularRate
+            )
+        );
     }
 
     public void periodic() {
-
+        drivetrain.periodic();
     }
 }

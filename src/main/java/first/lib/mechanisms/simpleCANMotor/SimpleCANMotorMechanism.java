@@ -5,7 +5,7 @@ import org.wpilib.command3.Command;
 import org.wpilib.command3.Mechanism;
 
 import first.lib.hardware.motors.canMotors.CANMotor;
-import first.robot.globalConstants;
+import first.robot.GlobalConstants;
 
 /**
  * Simple motor mechanism utilizing the CANMotor class to create a WPILib v3 mechanism.
@@ -29,7 +29,7 @@ public class SimpleCANMotorMechanism implements Mechanism {
      */
     public SimpleCANMotorMechanism(String mechName, CANMotor motor) {
         this.name = mechName;
-        boolean sim = globalConstants.currentMode.equals(globalConstants.Mode.SIM);
+        boolean sim = GlobalConstants.currentMode.equals(GlobalConstants.Mode.SIM);
         this.io = sim ? new SimpleCANMotorSim(motor) : new SimpleCANMotorReal(motor);
     }
 

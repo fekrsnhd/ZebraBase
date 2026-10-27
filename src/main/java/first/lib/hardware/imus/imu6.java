@@ -5,7 +5,7 @@ import org.wpilib.math.geometry.Rotation2d;
 /**
  * Base abstract class defining the contract for a 6-axis IMU.
  */
-public abstract class imu6 {
+public abstract class IMU6 {
     /** @return The continuous heading of the robot in degrees. */
     public abstract double getHeading();
     

@@ -18,24 +18,24 @@ import com.pathplanner.lib.config.RobotConfig;
 import com.pathplanner.lib.controllers.PPLTVController;
 import com.pathplanner.lib.util.DriveFeedforwards;
 
-import first.lib.hardware.imus.imu6;
-import first.robot.globalConstants;
+import first.lib.hardware.imus.IMU6;
+import first.robot.GlobalConstants;
 
 public class TankDriveMechanism implements Mechanism {
     private final String name;
     private final TankDriveIO io;
-    private final imu6 gyro;
+    private final IMU6 gyro;
     private final DifferentialDriveKinematics kinematics;
     private final DifferentialDriveOdometry odometry;
     private final TankDriveIOInputsAutoLogged inputs = new TankDriveIOInputsAutoLogged();
     private Pose2d currentPose = new Pose2d();
 
-    public TankDriveMechanism(String name, TankDriveConfig config, imu6 gyro) {
+    public TankDriveMechanism(String name, TankDriveConfig config, IMU6 gyro) {
         this.name = name;
         this.gyro = gyro;
         this.kinematics = new DifferentialDriveKinematics(config.trackWidthMeters);
         
-        boolean sim = globalConstants.currentMode.equals(globalConstants.Mode.SIM);
+        boolean sim = GlobalConstants.currentMode.equals(GlobalConstants.Mode.SIM);
         this.io = sim ? new TankDriveSimulation(config) : new TankDriveReal(config);
         this.odometry = new DifferentialDriveOdometry(gyro.getRotation2d(), 0, 0);
 

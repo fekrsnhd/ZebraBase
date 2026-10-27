@@ -16,6 +16,10 @@ public class AnalogHallEffectSensor extends AnalogInputController {
         super(channel);
     }
 
+    public AnalogHallEffectSensor(int channel, double thresholdVoltage) {
+        super(channel);
+        this.thresholdVoltage = thresholdVoltage;
+    }
     /**
      * Constructs a Hall Effect sensor using a specific configuration.
      * 

@@ -7,7 +7,7 @@ import com.reduxrobotics.canandgyro.Canandgyro;
 /**
  * IMU implementation using the Redux Robotics Canandgyro.
  */
-public class Canandgyroimu extends imu6 {
+public class Canandgyroimu extends IMU6 {
 
     private final Canandgyro imu;
 

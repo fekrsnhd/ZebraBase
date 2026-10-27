@@ -18,9 +18,9 @@ public class Robot extends LoggedRobot  {
   private final RobotContainer robotContainer;
 
   public Robot() {
-    Logger.recordMetadata("ProjectName", "MyProject"); // Set a metadata value
+    Logger.recordMetadata("ProjectName", "ZebraBase"); // Set a metadata value
 
-    switch (globalConstants.currentMode) {
+    switch (GlobalConstants.currentMode) {
       case REAL:
         // Running on a real robot, log to a USB stick ("/U/logs")
         Logger.addDataReceiver(new WPILOGWriter());
@@ -40,6 +40,8 @@ public class Robot extends LoggedRobot  {
         Logger.addDataReceiver(new WPILOGWriter(LogFileUtil.addPathSuffix(logPath, "_sim")));
         break;
     }
+
+    Logger.start();
     
     robotContainer = new RobotContainer();
 

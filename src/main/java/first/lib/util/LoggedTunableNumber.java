@@ -6,7 +6,7 @@
 // the root directory of this project.
 package first.lib.util;
 
-import first.robot.globalConstants;
+import first.robot.GlobalConstants;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
@@ -56,7 +56,7 @@ public class LoggedTunableNumber implements DoubleSupplier {
     if (!hasDefault) {
       hasDefault = true;
       this.defaultValue = defaultValue;
-      if (globalConstants.tuningMode) {
+      if (GlobalConstants.tuningMode) {
         dashboardNumber = new LoggedNetworkNumber(key, defaultValue);
       }
     }
@@ -71,7 +71,7 @@ public class LoggedTunableNumber implements DoubleSupplier {
     if (!hasDefault) {
       return 0.0;
     } else {
-      return globalConstants.tuningMode ? dashboardNumber.get() : defaultValue;
+      return GlobalConstants.tuningMode ? dashboardNumber.get() : defaultValue;
     }
   }
 
