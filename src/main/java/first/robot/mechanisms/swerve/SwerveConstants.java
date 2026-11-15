@@ -59,7 +59,7 @@ public class SwerveConstants {
     public static final Translation2d kBackRightOffset  = new Translation2d(-kTrackWidthX, -kTrackWidthY);
     public static final Translation2d kBackLeftOffset   = new Translation2d(-kTrackWidthX, kTrackWidthY);
 
-    // --- Motor Configurations ---
+    // Motor Configurations
     public static CANMotorConfig getDriveMotorConfig() {
         return new CANMotorConfig()
             .withBusName(kCANBusName)
@@ -82,7 +82,7 @@ public class SwerveConstants {
             .withSVA(0.1, 0.0, 0.0);
     }
 
-    // --- Factory Method to Generate Drivetrain ---
+    // Factory Method to Generate Drivetrain
     public static SwerveDriveMechanism createDrivetrain(IMU6 imu) {
         CANMotorConfig driveConfig = getDriveMotorConfig();
         CANMotorConfig steerConfig = getSteerMotorConfig();
